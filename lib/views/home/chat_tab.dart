@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/custom_alert.dart';
 
 class ChatTab extends StatelessWidget {
   const ChatTab({super.key});
@@ -28,40 +29,25 @@ class ChatTab extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         
-        // Weather Alert Banner (Premium visual card)
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [Color(0xFFFEF3C7), Color(0xFFFDE68A)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: const Color(0xFFFCD34D)),
-          ),
-          child: Row(
-            children: [
-              const Icon(Icons.wb_sunny_rounded, color: Color(0xFFD97706), size: 36),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Prakiraan Cuaca Hari Ini',
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF92400E), fontSize: 14),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Gelombang laut 1.2m - Kondisi aman untuk berlayar.',
-                      style: TextStyle(color: Colors.amber.shade900, fontSize: 12),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+        // Custom Alert 1: Prakiraan Cuaca (Warning Light)
+        const CustomAlert(
+          variant: AlertVariant.warning,
+          appearance: AlertAppearance.light,
+          close: true,
+          icon: Icon(Icons.wb_sunny_rounded),
+          title: 'Prakiraan Cuaca Hari Ini',
+          description: 'Gelombang laut 1.2m - Angin terpantau bersahabat. Kondisi aman dan sangat direkomendasikan untuk berlayar mencari ikan.',
+        ),
+        const SizedBox(height: 12),
+
+        // Custom Alert 2: GPS Telemetry (Success Light)
+        const CustomAlert(
+          variant: AlertVariant.success,
+          appearance: AlertAppearance.light,
+          close: true,
+          icon: Icon(Icons.gps_fixed_rounded),
+          title: 'GPS Kapal Terkoneksi',
+          description: 'Sistem navigasi maritim aktif. Pemancar sinyal darurat (SOS) KUB Mina Makmur sedang melacak perjalanan melaut Anda.',
         ),
         const SizedBox(height: 20),
         
