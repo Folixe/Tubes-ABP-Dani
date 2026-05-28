@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'scroll_showcase_screen.dart';
 
 class ProfileTab extends StatelessWidget {
   final VoidCallback onLogout;
@@ -278,9 +279,33 @@ class ProfileTab extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 16),
+
+        // Premium 3D Scroll Showcase Button
+        Card(
+          elevation: 0,
+          color: const Color(0xFFF0F9FF),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: const BorderSide(color: Color(0xFFBAE6FD)),
+          ),
+          child: ListTile(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ScrollShowcaseScreen()),
+              );
+            },
+            leading: const Icon(Icons.animation_rounded, color: Color(0xFF0284C7)),
+            title: const Text('Tugas UI Premium', style: TextStyle(color: Color(0xFF0284C7), fontWeight: FontWeight.bold)),
+            subtitle: const Text('Lihat Demo Animasi 3D Scroll (Aceternity UI)', style: TextStyle(fontSize: 12, color: Color(0xFF0369A1))),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded, color: Color(0xFF0284C7), size: 16),
+          ),
+        ),
         const SizedBox(height: 20),
         
         // Logout Button
+
         Card(
           elevation: 0,
           color: const Color(0xFFFEF2F2),
